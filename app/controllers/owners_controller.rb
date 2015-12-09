@@ -9,15 +9,6 @@ class OwnersController < ApplicationController
     return @onr if @onr
   end
 
-  def update
-    @owner = Owner.find_by(id: params[:id])
-    if @owner.update(owner_params)
-      # redirect_to owners_path, success: "Owner with name #{params[:owner][:first_name]} #{params[:owner][:last_name]} was updated successfully"
-    else
-      flash[:error] = "Owner with name #{params[:owner][:first_name]} #{params[:owner][:last_name]} was not created successfully"
-      # render 'edit'
-    end
-  end
 
   def new
     @owner = Owner.new
@@ -34,6 +25,16 @@ class OwnersController < ApplicationController
   
   def edit
     @owner = Owner.find_by(name: params[:name])
+  end
+  
+  def update
+    @owner = Owner.find_by(id: params[:id])
+    if @owner.update(owner_params)
+      # redirect_to owners_path, success: "Owner with name #{params[:owner][:first_name]} #{params[:owner][:last_name]} was updated successfully"
+    else
+      flash[:error] = "Owner with name #{params[:owner][:first_name]} #{params[:owner][:last_name]} was not created successfully"
+      # render 'edit'
+    end
   end
 
   def destroy
@@ -59,7 +60,7 @@ class OwnersController < ApplicationController
     end 
   end
   
-  
+
   private
     def owner_params
         params.require(:owner).permit(:first_name, :last_name, :age, :race, :location)

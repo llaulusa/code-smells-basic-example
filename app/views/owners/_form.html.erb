@@ -1,17 +1,19 @@
-<%= form_for(@owner) do |f| %>
-  <% if @owner.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@owner.errors.count, "error") %> prohibited this owner from being saved:</h2>
-
-      <ul>
-      <% @owner.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= form_for @item do |f| %>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %>
+  <br />
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
+  <br />
+  <%= f.label :age %>
+  <%= f.number_field :age %>
+  <br />
+  <%= f.label :race %>
+  <%= f.text_field :race %>
+  <br />
+  <%= f.label :location %>
+  <%= f.text_field :location %>
+  <br />
+ 
+  <%= f.submit %>
 <% end %>
